@@ -1,0 +1,140 @@
+:root {
+    --main-bg-color: #008cff;
+    --main-text-color: #008cff;
+    --second-text-color: #bbbec5;
+    --second-bg-color: #c1efde;
+  }
+  
+  .primary-text {
+    color: var(--main-text-color);
+  }
+  
+  .second-text {
+    color: var(--second-text-color);
+  }
+  
+  .primary-bg {
+    background-color: var(--main-bg-color);
+  }
+  
+  .secondary-bg {
+    background-color: var(--second-bg-color);
+  }
+  
+  .rounded-full {
+    border-radius: 100%;
+  }
+  
+  #wrapper {
+    overflow-x: hidden;
+  }
+  
+  #sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin 0.25s ease-out;
+    -moz-transition: margin 0.25s ease-out;
+    -o-transition: margin 0.25s ease-out;
+    transition: margin 0.25s ease-out;
+  }
+  
+  #sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+  }
+  
+  #sidebar-wrapper .list-group {
+    width: 15rem;
+  }
+  
+  #page-content-wrapper {
+    min-width: 100vw;
+  }
+  
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
+  
+  #menu-toggle {
+    cursor: pointer;
+  }
+  
+  .list-group-item {
+    border: none;
+    padding: 20px 30px;
+  }
+  
+  .list-group-item.active {
+    background-color: transparent;
+    color: var(--main-text-color);
+    font-weight: bold;
+    border: none;
+  }
+  
+  @media (min-width: 768px) {
+    #sidebar-wrapper {
+      margin-left: 0;
+    }
+  
+    #page-content-wrapper {
+      min-width: 0;
+      width: 100%;
+    }
+  
+    #wrapper.toggled #sidebar-wrapper {
+      margin-left: -15rem;
+    }
+  }
+  
+  .avatar {
+    vertical-align: middle;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+  }
+  .Headavatar {
+    vertical-align: middle;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+  margin-top: -7px;
+      margin-left: -13px;
+  }
+  .menu-png {
+    vertical-align: middle;
+    width: 37px;
+    height: 28px;
+    border-radius: 50%;
+  }
+  .navbar {
+    z-index: 0;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+  .navbar > .container-fluid {
+    display: flex;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: right;
+  }
+  .Headsearch {
+    border-radius: 5px;
+    margin-right: 40px;
+  }
+  .dropdown-menu {
+    position: absolute !important;
+    opacity: 1;
+    left: -180px !important;
+    min-width: 12rem !important;
+    padding: 15px !important;
+    background-color: #f8f9fa !important;
+  }
+  .dropdown-icon {
+    font-size: x-large !important;
+    margin-right: 5px !important;
+  }
+  .setting-icon {
+    font-size: 43px;
+    margin-top: -7px;
+      margin-left: -13px;
+  }
