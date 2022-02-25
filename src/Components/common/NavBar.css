@@ -1,24 +1,17 @@
-:root {
-    --main-bg-color: #008cff;
-    --main-text-color: #008cff;
-    --second-text-color: #bbbec5;
-    --second-bg-color: #c1efde;
-  }
-  
-  .primary-text {
-    color: var(--main-text-color);
+.primary-text {
+    color: #008cff;;
   }
   
   .second-text {
-    color: var(--second-text-color);
+    color:  #bbbec5;;
   }
   
   .primary-bg {
-    background-color: var(--main-bg-color);
+    background-color:#008cff;
   }
   
   .secondary-bg {
-    background-color: var(--second-bg-color);
+    background-color:#c1efde;
   }
   
   .rounded-full {
@@ -65,10 +58,16 @@
   }
   
   .list-group-item.active {
-    background-color: transparent;
-    color: var(--main-text-color);
-    font-weight: bold;
-    border: none;
+    background-color: transparent!important;
+    color: #008cff!important;
+    font-weight: bold!important;
+    border: none!important;
+  }
+  .list-group-item {
+    color:rgb(172, 172, 172)!important;
+  }
+  .list-group-item:hover{
+    color:black!important;
   }
   
   @media (min-width: 768px) {

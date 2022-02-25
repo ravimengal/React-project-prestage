@@ -36,6 +36,7 @@ const List = () => {
                             <div>
                                 <h6 className="Ticket-count d-flex justify-content-between align-items-center" style={{marginTop: "10px" , marginBottom:"-0.7rem"}}>
                                     <b>{users.length}</b>
+                                    <button className="btn btn-primary" style={{marginLeft:"-1rem"}}>Add Tickets</button>
                                 </h6>
                             </div>
                         </nav>

@@ -1,78 +1,84 @@
-import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter } from 'mdbreact';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
-class Add extends Component {
-state={
-  modal2: false,
-  modal3: false,
-  modal4: false,
-  modal5: false
-}
+const Add = () => {
+  const [email, setEmail] = useState('')
+  const [id, setId] = useState('')
+  const [name, setName] = useState('')
+  const [subject, setSubject] = useState('')
+  const [assignee, setAssignee] = useState('')
+  const [status, setStatus] = useState('')
+  const [time, setTime] = useState('')
+  const avatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4XoGpSkgybe5fubd2XlhO_zNXDF9CjbTrEw&usqp=CAU';
 
-toggle = nr => () => {
-  let modalNumber = 'modal' + nr
-  this.setState({
-    [modalNumber]: !this.state[modalNumber]
-  });
-}
+  const handleSubmit = async (e) => {
+    //before data send to server
+    e.preventDefault()
+    console.log({ email, id, name, subject, assignee, status, time, avatar })
+    try {
+      const result = await axios.post(`http://localhost:3000/users`, {
+        email: email,
+        id: id,
+        name: name,
+        subject: subject,
+        assignee: assignee,
+        status: status,
+        time: time,
+        avatar: avatar
+      })
+      console.log(result)
+    } catch (error) {
+          console.log('Unable to add ticket',error)
+    }
 
-render() {
-  return (
-    <MDBContainer>
-      <MDBBtn color="primary" onClick={this.toggle(2)}>Medium modal</MDBBtn>
-      <MDBModal isOpen={this.state.modal2} toggle={this.toggle(2)}>
-        <MDBModalHeader toggle={this.toggle(2)}>MDBModal title</MDBModalHeader>
-        <MDBModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={this.toggle(2)}>Close</MDBBtn>
-          <MDBBtn color="primary">Save changes</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-      <MDBBtn color="primary" onClick={this.toggle(3)}>Small modal</MDBBtn>
-      <MDBModal isOpen={this.state.modal3} toggle={this.toggle(3)} size="sm">
-        <MDBModalHeader toggle={this.toggle(3)}>MDBModal title</MDBModalHeader>
-        <MDBModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" size="sm" onClick={this.toggle(3)}>Close</MDBBtn>
-          <MDBBtn color="primary" size="sm">Save changes</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-      <MDBBtn color="primary" onClick={this.toggle(4)}>Large modal</MDBBtn>
-      <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)} size="lg">
-        <MDBModalHeader toggle={this.toggle(4)}>MDBModal title</MDBModalHeader>
-        <MDBModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={this.toggle(4)}>Close</MDBBtn>
-          <MDBBtn color="primary">Save changes</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-      <MDBBtn color="primary" onClick={this.toggle(5)}>Fluid modal</MDBBtn>
-      <MDBModal isOpen={this.state.modal5} toggle={this.toggle(5)} size="fluid">
-        <MDBModalHeader toggle={this.toggle(5)}>MDBModal title</MDBModalHeader>
-        <MDBModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-        </MDBModalBody>
-        <MDBModalFooter>
-          <MDBBtn color="secondary" onClick={this.toggle(5)}>Close</MDBBtn>
-          <MDBBtn color="primary">Save changes</MDBBtn>
-        </MDBModalFooter>
-      </MDBModal>
-    </MDBContainer>
-    );
   }
+
+  useEffect(() => {
+
+
+  }, [])
+
+  return (
+    <>
+      <div className="container" style={{ marginTop: "92px", marginLeft: "50px", padding: "55px", marginBottom: "60px", width: "-webkit-fill-available" }}>
+        <h2>Add Ticket</h2>
+        <form className="row g-3" onSubmit={handleSubmit}>
+          <div className="col-md-6">
+            <label htmlFor="inputEmail4" className="form-label">Requester Id</label>
+            <input type="number" className="form-control" onChange={(e) => setId(e.target.value)} />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputEmail4" className="form-label">Requester Email</label>
+            <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputPassword4" className="form-label">Requester Name</label>
+            <input type="text" className="form-control" onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputEmail4" className="form-label">Subject</label>
+            <input type="text" className="form-control" onChange={(e) => setSubject(e.target.value)} />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputEmail4" className="form-label">Assignee Name</label>
+            <input type="text" className="form-control" onChange={(e) => setAssignee(e.target.value)} />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputEmail4" className="form-label">Status</label>
+            <input type="text" className="form-control" onChange={(e) => setStatus(e.target.value)} />
+          </div>
+          <div className="col-md-6">
+            <label htmlFor="inputEmail4" className="form-label">Last Update</label>
+            <input type="text" className="form-control" onChange={(e) => setTime(e.target.value)} />
+          </div>
+          <div className="col-12">
+            <button type="submit" className="btn btn-primary"  >Add Ticket</button>
+          </div>
+        </form>
+      </div>
+
+    </>
+  )
 }
 
-export default Add;
+export default Add

@@ -1,7 +1,6 @@
 import React from "react";
-import List from "../users/List";
 import './NavBar.css'
-
+import {Link, Outlet} from 'react-router-dom'; 
 const NavBar = () => {
 
   //to toggle sidebar
@@ -20,7 +19,7 @@ const NavBar = () => {
         </div>
         <div className="list-group list-group-flush my-3">
           <a
-            href="#"
+            href=""
             className="list-group-item list-group-item-action bg-transparent second-text active"
           >
             <i className="fas fa-tachometer-alt me-2"></i>Home
@@ -28,7 +27,7 @@ const NavBar = () => {
           <br/>
           <br/>
           <a
-            href="#"
+            href=""
             className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
           >
             <i className="fas fa-project-diagram me-2"></i>Open Tickets
@@ -36,7 +35,7 @@ const NavBar = () => {
           <br/>
           <br/>
           <a
-            href="#"
+            href=""
             className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
           >
             <i className="fas fa-chart-line me-2"></i>Pending Tickets
@@ -44,7 +43,7 @@ const NavBar = () => {
           <br/>
           <br/>
           <a
-            href="#"
+            href=""
             className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
           >
             <i className="fas fa-paperclip me-2"></i>Solved Tickets
@@ -52,7 +51,7 @@ const NavBar = () => {
           <br/>
           <br/>
           <a
-            href="#"
+            href=""
             className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
           >
             <i className="fas fa-shopping-cart me-2"></i>Spam
@@ -60,12 +59,12 @@ const NavBar = () => {
           <br/>
           <br/>
           <br/><br/>
-          <a
-            href="#"
+          <Link
+            to="/list"
             className="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
           >
-            <i className="fas fa-power-off me-2"></i>All Tickets
-          </a>
+            <i className="fas fa-collect me-2"></i>All Tickets
+          </Link>
 
         </div>
       </div>
@@ -78,13 +77,17 @@ const NavBar = () => {
             ></i>
             <h2 className="fs-2 m-0">Logo / Name</h2>
           </div>
-
         </nav>
+      {/* to render all routes under navbar as children of navbar */}
+        <Outlet />
         {/* To Display Tickets List */}
-        <List />
+        {/* <List /> */}
+        {/* To Add ticket */}
+        {/* <Add/> */}
+        {/* To update Ticket */}
+        {/* <Update/> */}
       </div>
     </div>
   );
 };
-
 export default NavBar;
