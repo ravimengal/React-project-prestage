@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import './Users.css'
+import { Link } from 'react-router-dom';
 const List = () => {
 
     const [users,setUsers] = useState([]);
@@ -108,7 +109,7 @@ const List = () => {
                             </td>
                             <td className="align-middle">
                                 <button className="btn btn-danger " onClick={()=>{deleteUser(user.id)}}>
-                                    <a className="font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" style={{textDecoration: "none", color: "white"}}>
+                                    <a  className="font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" style={{textDecoration: "none", color: "white"}}>
                                         Delete
                                     </a>
                                 </button>
@@ -117,9 +118,9 @@ const List = () => {
                             <td className="align-middle">
                                 <button
                                     className="btn btn-primary " >
-                                    <a href="" className="font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" style={{textDecoration: "none", color: "white"}} >
+                                    <Link to={`/update/${user.id}`} className="font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" style={{textDecoration: "none", color: "white"}} >
                                         Update
-                                    </a>
+                                    </Link>
                                 </button>
 
                             </td>

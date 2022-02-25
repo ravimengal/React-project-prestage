@@ -11,10 +11,11 @@ function App() {
     <Router>         
       <Routes>
         <Route path="/" element={<NavBar/>} >
-        <Route exact path="/list" element={<List/>} />
+        <Route path="/list" element={<List/>} />
         <Route path="/add" element={<Add/>} />
         <Route path="/update/:id" element={<Update/>} />
         </Route>
+        <Route path="*" element={<div style={{marginLeft:"50px",marginTop:"50px"}}><h1>There's nothing here!</h1></div>} />
       </Routes>
     </Router>
 

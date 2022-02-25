@@ -43,10 +43,10 @@ const Update = () => {
       <div className="container" style={{ marginTop: "92px", marginLeft: "50px", padding: "55px", marginBottom: "60px", width: "-webkit-fill-available" }}>
         <h2>Update</h2>
         <form className="row g-3" onSubmit={handleSubmit}>
-          {/* <div className="col-md-6">
+          <div className="col-md-6">
             <label htmlFor="inputEmail4" className="form-label">Requester Id</label>
             <input type="number" className="form-control" onChange={(e) => setId(e.target.value)} />
-          </div> */}
+          </div>
           <div className="col-md-6">
             <label htmlFor="inputEmail4" className="form-label">Requester Email</label>
             <input type="email" className="form-control" onChange={(e) => setEmail(e.target.value)} />
