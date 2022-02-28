@@ -1,47 +1,58 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 import './Users.css'
 import { Link } from 'react-router-dom';
 const List = () => {
 
-    const [users,setUsers] = useState([]);
-
-
-    
+    const [users,setUsers] = useState([])
     //to get List of Ticket available in the database
     const getData = async () =>{
 
         const result = await axios.get('http://localhost:3000/users')
-        console.table(result.data);
+        // console.table(result.data);
         setUsers(result.data);
         }
-    
         //to delete ticket from database
         const deleteUser = async (id)=>{
-                const result = await axios.delete(`http://localhost:3000/users/${id}`)
-                console.log(result);
-                getData();
-            }
-
+                 await axios.delete(`http://localhost:3000/users/${id}`).then(res=>{
+                        // console.log(res)
+                        getData();
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Your work has been deleted',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })
+                    }).catch(err=>{
+                        // console.log(err)
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Your work has not been deleted',
+                            showConfirmButton: false,
+                            timer: 1500
+                            })
+                    })
+        }
     useEffect(() => {
             getData();
-           
+ 
     } , [])
     return (
         <>
         <div className="container w-auto mt-4 Tablebox">
             <div className="table-responsive table-hover">
                 <table className="table table-hover align-items-center">
-                    <thead>
-                        <nav aria-label=" text-sm Page navigation example" style={{height: "38px"}}>
-                            <div>
+                        <div aria-label=" text-sm Page navigation example" style={{height: "38px"}}>
+                            
                                 <h6 className="Ticket-count d-flex justify-content-between align-items-center" style={{marginTop: "10px" , marginBottom:"-0.7rem"}}>
                                     <b>{users.length}</b>
-                                    <button className="btn btn-primary" style={{marginLeft:"-1rem"}}>Add Tickets</button>
+                                    <Link to="/add"><button className="btn btn-primary" style={{marginLeft:"-1rem"}}>Add Tickets</button></Link>
                                 </h6>
-                            </div>
-                        </nav>
-                    </thead>
+                            
+                        </div>
                 </table>
                 <br />
                 <hr />
