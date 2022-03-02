@@ -10,7 +10,7 @@ const Add = () => {
   const [subject, setSubject] = useState('')
   const [assignee, setAssignee] = useState('')
   const [status, setStatus] = useState('')
-  const [time, setTime] = useState(new Date().toLocaleString())
+  const [time] = useState(new Date().toLocaleString())
   const avatar = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4XoGpSkgybe5fubd2XlhO_zNXDF9CjbTrEw&usqp=CAU';
   const Navigate = useNavigate()
 

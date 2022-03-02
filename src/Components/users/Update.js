@@ -20,7 +20,7 @@ const Update = () => {
     e.preventDefault();
     const data = {id, name, email, subject, assignee, status, time}
     //to check data before update
-    // console.log('data before update',data)
+    console.log('data before update',data)
     const result = await axios.put(`http://localhost:3000/users/${Param.id}`, {
       id:id,
       name:name,
@@ -72,7 +72,10 @@ const Update = () => {
   return (
     <>
       <div className="container" style={{ marginTop: "92px", marginLeft: "50px", padding: "55px", marginBottom: "60px", width: "-webkit-fill-available" }}>
+        <div className='d-flex' style={{justifyContent:"space-between",marginBottom:"10px"}}>
         <h2>Update Ticket {id}</h2>
+        <img src={avatar} alt={name} style={{width:"46px",height:"46px",borderRadius:"50%"}}/>
+        </div>
         <form className="row g-3" onSubmit={handleUpdate}>
           <div className="col-md-6">
             <label htmlFor="inputEmail4" className="form-label">Requester Id</label>
